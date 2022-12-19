@@ -11,3 +11,49 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.guess_board {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  font-size: 34px;
+  margin-bottom: 40px;
+}
+
+.guess_square {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 34px;
+  margin: 10px;
+  border-bottom: 1px solid black;
+}
+
+.letters_board {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 514px;
+  gap: 18px;
+}
+
+.letter_board button {
+  width: 34px;
+  height: 34px;
+  font-size: 22px;
+  cursor: pointer;
+  border: 1px solid black;
+  border-radius: 6px;
+}
+
+.letter_board:active {
+  transform: scale(.95);
+}

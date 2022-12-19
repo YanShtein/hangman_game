@@ -1,23 +1,45 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import AlphabetBoard from './components/AlphabetBoard';
+
+
+const DisplayGuessBoard = ({ lettersGuessed }) => {
+
+  return (
+    <div className="guess_board">
+      {
+        lettersGuessed.map((char, id) => {
+          return (
+            <div key={id} className="guess_square">
+              <span>{char}</span>
+            </div>
+          )
+        })
+      }
+    </div>
+  );
+}
+
+function Hangman() {
+  const [word, setWord] = useState('welcome');
+  const [lettersGuessed, setLettersGuessed] = useState(['', '', '', 'c', '', '', '']);
+  const [incorrectGuesses, setIncorrectGuesses] = useState(0);
+  const [winOrLose, setWinOrLose] = useState();
+  // const words = ['welcome'];
+
+  return (
+    <div className="board">
+      <DisplayGuessBoard lettersGuessed={lettersGuessed}/>
+      <AlphabetBoard />
+    </div>
+  )
+};
+
 
 function App() {
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container">
+      <Hangman />
     </div>
   );
 }
