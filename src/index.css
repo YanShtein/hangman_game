@@ -13,13 +13,28 @@ code {
 }
 
 .container {
-  display: flex;
+  /* display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: center; */
   height: 100vh;
 }
 
-.guess_board {
+.board {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.board-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+}
+
+.board-guess {
+  height: 60px;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -27,7 +42,7 @@ code {
   margin-bottom: 40px;
 }
 
-.guess_square {
+.board-guess_char {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -36,7 +51,7 @@ code {
   border-bottom: 1px solid black;
 }
 
-.letters_board {
+.board-keyboard {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -45,7 +60,7 @@ code {
   gap: 18px;
 }
 
-.letter_board button {
+.board-keyboard button {
   width: 34px;
   height: 34px;
   font-size: 22px;
@@ -54,6 +69,6 @@ code {
   border-radius: 6px;
 }
 
-.letter_board:active {
+.board-keyboard_btn:active {
   transform: scale(.95);
 }
