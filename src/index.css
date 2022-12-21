@@ -28,9 +28,11 @@ code {
 
 .board-header {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 100px;
+  margin-bottom: 50px;
 }
 
 .board-guess {
