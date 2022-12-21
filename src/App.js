@@ -1,26 +1,11 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import AlphabetBoard from './components/AlphabetBoard';
+import GuessBoard from "./components/GuessBoard";
 import { randomWord } from "./words";
 
 
-function GuessBoard ({ guessedArr }) {
-  return (
-    <div className="board-guess">
-      {
-        guessedArr.map((char, id) => {
-          return (
-            <div key={id} className="board-guess_char">
-              <span>{char}</span>
-            </div>
-          )
-        })
-      }
-    </div>
-  );
-};
-
 function Hangman() {
-  const [word, setWord] = useState(randomWord());
+  const [word, setWord] = useState(randomWord('general'));
   const [guessedArr, setGuessedArr] = useState(word.split('').fill(''));
   const [triesLeft, setTriesLeft] = useState(6);
   const [winOrLose, setWinOrLose] = useState();
@@ -33,7 +18,7 @@ function Hangman() {
       handleLeftGuesses();
     }
   }; 
-  console.log(word)
+
   function handleCharFound(letter) {
     let newGuessedArr = [...guessedArr];
     word.split('').forEach((char,i) => {
@@ -54,8 +39,8 @@ function Hangman() {
     setTriesLeft(left);
   }
 
-  function resetGame() {
-    let newRandom = randomWord();
+  function resetGame(category) {
+    let newRandom = randomWord(category);
     setWord(newRandom);
     setGuessedArr(newRandom.split('').fill(''));
     setTriesLeft(6);
@@ -66,12 +51,16 @@ function Hangman() {
     <div className="board">
       <div className="board-header">
         <p>The Hangman game: <b>{triesLeft}</b> guesses left. {winOrLose}
-          <button type="button" onClick={resetGame}>Reset</button>
+          <button type="button" onClick={() => resetGame('general')}>Start Over!</button>
         </p>
         <p>{word}</p>
       </div>      
       <GuessBoard guessedArr={guessedArr}/>
       <AlphabetBoard word={word} handleGuess={handleGuess} winOrLose={winOrLose}/> 
+      <button onClick={() => resetGame('veges')}>Vegetables</button>
+      <button onClick={() => resetGame('fruits')}>Fruits</button>
+      <button onClick={() => resetGame('electronics')}>Electronics</button>
+      <button onClick={() => resetGame('general')}>General</button>
     </div>
   )
 };
