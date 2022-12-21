@@ -25,38 +25,69 @@ function Hangman() {
   const [leftGuesses, setLeftGuesses] = useState(6);
   const [winOrLose, setWinOrLose] = useState();
   // const words = ['welcome'];
+  // function handleGuess(e) {
+  //   const letter = e.target.value;
+  //   if (word.indexOf(letter) !== -1) {
+  //     word.split('').forEach(char => {
+  //       if (letter === char) {
+  //         let indexChar = word.indexOf(char);
+  //         let newArr = [...guessedArr];
+  //         newArr[indexChar] = letter;
+  //         setGuessedArr(newArr)
+  //         // console.log(newArr)
+  //       }
+  //     })
+  //   } else {
+  //     if (leftGuesses >= 1 && guessedArr === word.split('')) { // behaves strange need to implement same char
+  //       setWinOrLose('You won!');
+  //     } else if (leftGuesses < 1) {
+  //       console.log('less than one')
+  //       setWinOrLose('You Lose!');
+  //       setGuessedArr(word.split(''))
+  //       console.log(word.split(''))
+  //     } else {
+  //       setLeftGuesses(leftGuesses - 1);
+        
+  //     }
+  //   }
+  // };
+
   function handleGuess(e) {
     const letter = e.target.value;
+    let newGuessedArr = [...guessedArr];
     if (word.indexOf(letter) !== -1) {
-      word.split('').forEach(char => {
+      word.split('').forEach((char,i) => {
         if (letter === char) {
-          let indexChar = word.indexOf(char);
-          let newArr = [...guessedArr];
-          newArr[indexChar] = letter;
-          setGuessedArr(newArr)
-          // console.log(newArr)
+          newGuessedArr[i] = letter
         }
-      })
+      });
+      setGuessedArr(newGuessedArr);
     } else {
-      if (leftGuesses >= 1 && guessedArr === word.split('')) { // behaves strange need to implement same char
-        setWinOrLose('You won!');
-      } else if (leftGuesses < 1) {
-        console.log('less than one')
-        setWinOrLose('You Lose!');
-        setGuessedArr(word.split(''))
-        console.log(word.split(''))
-      } else {
-        setLeftGuesses(leftGuesses - 1);
-        
-      }
+      handleLeftGuesses();
     }
-  };
+  }; 
+  
+  function handleLeftGuesses() {
+    let check = leftGuesses - 1;
+    console.log('yep')
+    if (check < 1) {
+      console.log('less than one')
+    }
+    setLeftGuesses(check);
+    // if (leftGuesses > 1 && guessedArr === word.split('')) {
+    //   setWinOrLose('You won!');
+    // } else {
+    //   console.log('less than one')
+    //   setWinOrLose('You Lose!');
+    //   setGuessedArr(word.split(''))
+    // }
+    // setLeftGuesses(leftGuesses - 1);
+  }
 
   return (
     <div className="board">
       <div className="board-header">
         <p>The Hangman game: {leftGuesses} {winOrLose}</p>
-        {console.log(leftGuesses)}
       </div>      
       <GuessBoard guessedArr={guessedArr} />
       <AlphabetBoard word={word} handleGuess={handleGuess} winOrLose={winOrLose}/> 

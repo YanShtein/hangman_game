@@ -4,7 +4,6 @@ function AlphabetBoard({ handleGuess, winOrLose }) {
   'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
 
   let disabled = winOrLose ? true : false;
-  console.log(`alphaBoard ${winOrLose}`)
   return (
     <div className="board-keyboard">
       {
