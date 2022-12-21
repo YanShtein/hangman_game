@@ -3,7 +3,7 @@ import AlphabetBoard from './components/AlphabetBoard';
 
 
 function GuessBoard ({ guessedArr }) {
-  console.log(guessedArr)
+  // console.log(guessedArr)
   return (
     <div className="board-guess">
       {
@@ -22,10 +22,9 @@ function GuessBoard ({ guessedArr }) {
 function Hangman() {
   const [word, setWord] = useState('welcome');
   const [guessedArr, setGuessedArr] = useState(Array(word.length).fill(''));
-  const [incorrectGuesses, setIncorrectGuesses] = useState(6);
+  const [leftGuesses, setLeftGuesses] = useState(6);
   const [winOrLose, setWinOrLose] = useState();
   // const words = ['welcome'];
-
   function handleGuess(e) {
     const letter = e.target.value;
     if (word.indexOf(letter) !== -1) {
@@ -35,27 +34,32 @@ function Hangman() {
           let newArr = [...guessedArr];
           newArr[indexChar] = letter;
           setGuessedArr(newArr)
-          console.log(newArr)
+          // console.log(newArr)
         }
       })
     } else {
-      if (incorrectGuesses < 1 && guessedArr === word.split('')) {
-        setWinOrLose('You won!')
-      } else if (incorrectGuesses < 1){
-        setWinOrLose('You Lose!')
+      if (leftGuesses >= 1 && guessedArr === word.split('')) { // behaves strange need to implement same char
+        setWinOrLose('You won!');
+      } else if (leftGuesses < 1) {
+        console.log('less than one')
+        setWinOrLose('You Lose!');
+        setGuessedArr(word.split(''))
+        console.log(word.split(''))
       } else {
-        setIncorrectGuesses(incorrectGuesses - 1);
+        setLeftGuesses(leftGuesses - 1);
+        
       }
     }
   };
-  
+
   return (
     <div className="board">
       <div className="board-header">
-        <p>The Hangman game: {incorrectGuesses} {winOrLose}</p>
+        <p>The Hangman game: {leftGuesses} {winOrLose}</p>
+        {console.log(leftGuesses)}
       </div>      
       <GuessBoard guessedArr={guessedArr} />
-      <AlphabetBoard word={word} handleGuess={handleGuess}/> 
+      <AlphabetBoard word={word} handleGuess={handleGuess} winOrLose={winOrLose}/> 
     </div>
   )
 };
