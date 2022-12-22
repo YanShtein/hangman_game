@@ -3,11 +3,11 @@ import AlphabetBoard from './components/AlphabetBoard';
 import GuessBoard from "./components/GuessBoard";
 import { randomWord } from "./words";
 
-
 function Hangman() {
   const [word, setWord] = useState(randomWord('everyday'));
+  const [selected, setSelected] = useState('everyday');
   const [guessedArr, setGuessedArr] = useState(word.split('').fill(''));
-  const [triesLeft, setTriesLeft] = useState(6);
+  const [lives, setLives] = useState(6);
   const [winOrLose, setWinOrLose] = useState();
 
   function handleGuess(e) {
@@ -31,44 +31,71 @@ function Hangman() {
   };
 
   function handleLeftGuesses() { 
-    let left = triesLeft - 1;
+    let left = lives - 1;
     if (left < 1) {
       setWinOrLose('You Lose!');
       setGuessedArr(word.split(''));
     }
-    setTriesLeft(left);
+    setLives(left);
   }
 
-  function resetGame(category) {
-    let newRandom = randomWord(category);
-    setWord(newRandom);
-    setGuessedArr(newRandom.split('').fill(''));
-    setTriesLeft(6);
-    setWinOrLose();
+  function resetGame(cat) {
+    if (word !== guessedArr.join('')) {
+      return '';
+    } else {
+      let newRandom = randomWord(cat);
+      setWord(newRandom);
+      setGuessedArr(newRandom.split('').fill(''));
+      setLives(6);
+      setWinOrLose();
+      setSelected(cat)
+    }
   };
 
   return (
-    <div className="board">
-      <div className="board-header">
-        <p>The Hangman game: <b>{triesLeft}</b> guesses left. {winOrLose}
-          <button type="button" onClick={() => resetGame('everyday')}>Start Over!</button>
-        </p>
-        <p>{word}</p>
-      </div>      
-      <GuessBoard guessedArr={guessedArr}/>
-      <AlphabetBoard word={word} handleGuess={handleGuess} winOrLose={winOrLose}/> 
-      <button onClick={() => resetGame('food')}>Food</button>
-      <button onClick={() => resetGame('programming')}>Programming</button>
-      <button onClick={() => resetGame('everyday')}>Everyday</button>
-      <button onClick={() => resetGame('sports')}>Sports</button>
-    </div>
+    <div className="container">
+      <div className="hangman">
+        <div className="header">
+          <h2>THE HANGMAN</h2>
+          <small>- Simple React guess the word game -</small><br/>
+          <small>Finish the word, and than move to other category.</small>
+        </div>
+        <div className="categories">
+          <button 
+            className={selected === 'food' ? 'selected' : null} 
+            onClick={() => resetGame('food')}>Food ↻</button>
+          <button 
+            className={selected === 'programming' ? 'selected' : null} 
+            onClick={() => resetGame('programming')}>Programming ↻</button>
+          <button
+            className={selected === 'everyday' ? 'selected' : null}  
+            onClick={() => resetGame('everyday')}>Everyday ↻</button>
+          <button 
+            className={selected === 'sports' ? 'selected' : null} 
+            onClick={() => resetGame('sports')}>Sports ↻</button>
+        </div>  
+        <div className="hangman-img">
+          <img src={require('./hangman.jpeg')} alt="hangman" />
+          <p>✴ You have: <b>{lives}</b> lives. ✴</p>
+          <p>{winOrLose}</p>
+        </div>
+        <div className="board">     
+          <GuessBoard guessedArr={guessedArr}/>
+          <AlphabetBoard 
+            handleGuess={handleGuess} 
+            winOrLose={winOrLose}/> 
+        </div>
+        <small className="footer">Designed & Built by Yan Shtein</small>
+      </div>
+    </div>  
   )
 };
 
 
 function App() {
   return (
-    <div className="container">
+    <div className="App">
+      <div className="bg"></div>
       <Hangman />
     </div>
   );

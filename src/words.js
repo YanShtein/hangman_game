@@ -7,7 +7,7 @@ const categories = {
     'potato', 'ravioli', 'steak', 'taco', 'vanilla','waffle', 'yogurt', 'zucchini'
   ],
   programming: [
-    'algorithm', 'argument', 'arrays', 'arithmeticoperators', 'assignmentoperators', 'binary', 'elsestatements',
+    'algorithm', 'argument', 'arrays', 'binary',
     'loops', 'statement', 'variable', 'python', 'javaScript', 'java', 'php', 'ruby', 'unix'
   ],
   everyday: [
@@ -15,7 +15,7 @@ const categories = {
     'headphone', 'sofa', 'pencil', 'glass', 'laptop', 'fork', 'watch', 'photo', 'camera', 'creditcard', 'mobilephone',
   ],
   sports: [
-    'basketball', 'aerobics', 'boxer', 'biking', 'bowling', 'baseball', 'cricket', 'deadlifting', 'diving',
+    'basketball', 'aerobics', 'boxer', 'biking', 'bowling', 'baseball', 'cricket', 'diving',
     'fitness', 'football', 'golf', 'gymnast', 'hockey', 'iceskating', 'jogger', 'karate', 'rockclimbing', 'running',
     'sailing', 'volleyball', 
   ]
