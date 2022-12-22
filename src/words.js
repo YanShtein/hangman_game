@@ -1,28 +1,36 @@
 const categories = {
-  veges: [
-    'cucumber', 'tomato', 'lettuce'
+  food: [
+    'bacon', 'bagel', 'bread', 'butter', 'beans', 'avocado', 'almond', 'caramel', 'cauliflower', 
+    'carrot', 'cornflakes', 'dragonfruit', 'egg', 'flour', 'fish', 'gelatin', 'gravy', 'ginger', 
+    'honey', 'herbs', 'icecream', 'jalapeno', 'kebab', 'ketchup', 'kiwi', 'lasagna', 'lobster',
+    'macaroni', 'marshmallow', 'margarine', 'mozzarella', 'noodles', 'oregano', 'peanutbutter', 
+    'potato', 'ravioli', 'steak', 'taco', 'vanilla','waffle', 'yogurt', 'zucchini'
   ],
-  fruits: [
-    'apple', 'banana', 'strawberry'
+  programming: [
+    'algorithm', 'argument', 'arrays', 'arithmeticoperators', 'assignmentoperators', 'binary', 'elsestatements',
+    'loops', 'statement', 'variable', 'python', 'javaScript', 'java', 'php', 'ruby', 'unix'
   ],
-  electronics: [
-    'computer', 'phone', 'mouse', 'keyboard', 'motherboard', 'graphicscard', 'microphone'
+  everyday: [
+    'cupboard', 'battery', 'mirror', 'scissors', 'newspaper', 'alarmclock', 'knife', 'purse', 'magazine', 'passport', 
+    'headphone', 'sofa', 'pencil', 'glass', 'laptop', 'fork', 'watch', 'photo', 'camera', 'creditcard', 'mobilephone',
   ],
-  general: [
-    'glass', 'table', 'sunglasses', 'door', 'bag', 'spoon', 'window', 'curtain', 'kitchen'
+  sports: [
+    'basketball', 'aerobics', 'boxer', 'biking', 'bowling', 'baseball', 'cricket', 'deadlifting', 'diving',
+    'fitness', 'football', 'golf', 'gymnast', 'hockey', 'iceskating', 'jogger', 'karate', 'rockclimbing', 'running',
+    'sailing', 'volleyball', 
   ]
 };
 
 function randomWord(choice) {
   switch (choice) {
-    case 'veges':
-      return categories['veges'][Math.floor(Math.random() * categories['veges'].length)];
-    case 'fruits':
-      return categories['fruits'][Math.floor(Math.random() * categories['fruits'].length)];
-    case 'electronics':
-      return categories['electronics'][Math.floor(Math.random() * categories['electronics'].length)];  
-    case 'general':
-      return categories['general'][Math.floor(Math.random() * categories['general'].length)];
+    case 'food':
+      return categories['food'][Math.floor(Math.random() * categories['food'].length)];
+    case 'programming':
+      return categories['programming'][Math.floor(Math.random() * categories['programming'].length)];  
+    case 'everyday':
+      return categories['everyday'][Math.floor(Math.random() * categories['everyday'].length)];
+    case 'sports':
+      return categories['sports'][Math.floor(Math.random() * categories['sports'].length)];
     default:
       console.log('default');
   }

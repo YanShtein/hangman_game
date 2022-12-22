@@ -5,7 +5,7 @@ import { randomWord } from "./words";
 
 
 function Hangman() {
-  const [word, setWord] = useState(randomWord('general'));
+  const [word, setWord] = useState(randomWord('everyday'));
   const [guessedArr, setGuessedArr] = useState(word.split('').fill(''));
   const [triesLeft, setTriesLeft] = useState(6);
   const [winOrLose, setWinOrLose] = useState();
@@ -51,16 +51,16 @@ function Hangman() {
     <div className="board">
       <div className="board-header">
         <p>The Hangman game: <b>{triesLeft}</b> guesses left. {winOrLose}
-          <button type="button" onClick={() => resetGame('general')}>Start Over!</button>
+          <button type="button" onClick={() => resetGame('everyday')}>Start Over!</button>
         </p>
         <p>{word}</p>
       </div>      
       <GuessBoard guessedArr={guessedArr}/>
       <AlphabetBoard word={word} handleGuess={handleGuess} winOrLose={winOrLose}/> 
-      <button onClick={() => resetGame('veges')}>Vegetables</button>
-      <button onClick={() => resetGame('fruits')}>Fruits</button>
-      <button onClick={() => resetGame('electronics')}>Electronics</button>
-      <button onClick={() => resetGame('general')}>General</button>
+      <button onClick={() => resetGame('food')}>Food</button>
+      <button onClick={() => resetGame('programming')}>Programming</button>
+      <button onClick={() => resetGame('everyday')}>Everyday</button>
+      <button onClick={() => resetGame('sports')}>Sports</button>
     </div>
   )
 };
