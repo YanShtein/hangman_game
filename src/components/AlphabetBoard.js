@@ -1,4 +1,4 @@
-function AlphabetBoard({ clickedLetter, winOrLose, clicked }) {
+function AlphabetBoard({ handleLetterClicked, winOrLose, clickedLetter }) {
   
   const alphabet = [
     'q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', 
@@ -8,12 +8,12 @@ function AlphabetBoard({ clickedLetter, winOrLose, clicked }) {
   function isDisabled(letter) {
     if (winOrLose) {
       return true;
-    } else if (clicked.includes(letter)) {
+    } else if (clickedLetter.includes(letter)) {
       return true;
     } else {
       return false;
     }
-  }
+  };
 
   return (
     <div className="board-keyboard">
@@ -21,7 +21,11 @@ function AlphabetBoard({ clickedLetter, winOrLose, clicked }) {
         alphabet.map((letter, id) => {
           return (
             <div key={id} className="board-keyboard_btn">
-              <button disabled={isDisabled(letter)} value={letter} onClick={e => clickedLetter(e)}>{letter}</button>
+              <button 
+                disabled={isDisabled(letter)} 
+                value={letter} 
+                onClick={e => handleLetterClicked(e)}
+                >{letter}</button>
             </div>
           )
         })
