@@ -5,13 +5,19 @@ import { randomWord } from "./words";
 
 function Hangman() {
   const [word, setWord] = useState(randomWord('everyday'));
+  const [clicked, setClicked] = useState([]);
   const [selected, setSelected] = useState('everyday');
-  const [guessedArr, setGuessedArr] = useState(word.split('').fill(''));
+  const [guessedArr, setGuessedArr] = useState(word.split('').fill('')); // only guessed letters
   const [lives, setLives] = useState(6);
   const [winOrLose, setWinOrLose] = useState();
 
-  function handleGuess(e) {
+  function clickedLetter(e) {
     const letter = e.target.value;
+    setClicked([...clicked, letter]);
+    handleGuess(letter);
+  };
+
+  function handleGuess(letter) {
     if (word.indexOf(letter) !== -1) {
       handleCharFound(letter)
     } else {
@@ -37,19 +43,16 @@ function Hangman() {
       setGuessedArr(word.split(''));
     }
     setLives(left);
-  }
+  };
 
   function resetGame(cat) {
-    if (word !== guessedArr.join('')) {
-      return '';
-    } else {
-      let newRandom = randomWord(cat);
-      setWord(newRandom);
-      setGuessedArr(newRandom.split('').fill(''));
-      setLives(6);
-      setWinOrLose();
-      setSelected(cat)
-    }
+    let newRandom = randomWord(cat);
+    setWord(newRandom);
+    setGuessedArr(newRandom.split('').fill(''));
+    setLives(6);
+    setWinOrLose();
+    setSelected(cat);
+    setClicked([]);
   };
 
   return (
@@ -58,7 +61,7 @@ function Hangman() {
         <div className="header">
           <h2>THE HANGMAN</h2>
           <small>- Simple React guess the word game -</small><br/>
-          <small>Finish the word, and than move to other category.</small>
+          <small>Finish the word, before lives depleted.</small>
         </div>
         <div className="categories">
           <button 
@@ -76,14 +79,15 @@ function Hangman() {
         </div>  
         <div className="hangman-img">
           <img src={require('./hangman.jpeg')} alt="hangman" />
-          <p>✴ You have: <b>{lives}</b> lives. ✴</p>
+          <p>* You have: <b>{lives}</b> lives. *</p>
           <p>{winOrLose}</p>
         </div>
         <div className="board">     
           <GuessBoard guessedArr={guessedArr}/>
           <AlphabetBoard 
-            handleGuess={handleGuess} 
-            winOrLose={winOrLose}/> 
+            clickedLetter={clickedLetter} 
+            winOrLose={winOrLose}
+            clicked={clicked}/> 
         </div>
         <small className="footer">Designed & Built by Yan Shtein</small>
       </div>
