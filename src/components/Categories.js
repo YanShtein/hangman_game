@@ -2,7 +2,7 @@ export default function Categories({ resetGame, selectedCat }) {
   return (
     <div className="categories">
       <button
-        title="42 words"
+        title="38 words"
         className={selectedCat === 'food' ? 'selected' : null} 
         onClick={() => resetGame('food')}>Food ↻</button>
       <button 
@@ -14,7 +14,7 @@ export default function Categories({ resetGame, selectedCat }) {
         className={selectedCat === 'everyday' ? 'selected' : null}  
         onClick={() => resetGame('everyday')}>Everyday ↻</button>
       <button 
-        title="20 words"
+        title="19 words"
         className={selectedCat === 'sports' ? 'selected' : null} 
         onClick={() => resetGame('sports')}>Sports ↻</button>
     </div>  

@@ -93,20 +93,20 @@ p, span, small {
   color: var(--color);
 }
 
-.hangman-img {
-  height: 150px;
-  width: 180px;
-  margin: 30px auto;
-}
-
-.hangman-img img {
-  height: 100%;
-  width: 100%;
+.hangman-canvas {
+  margin: 10px auto;
 }
 
 p {
   text-align: center;
   width: 100%;
+  margin: 0;
+}
+
+.winorlose {
+  color: #1dffff;
+  letter-spacing: 6px;
+  margin-top: 10px;
 }
 
 .categories p {
@@ -129,7 +129,6 @@ p {
   flex-direction: column;
   width: 100%;
   align-items: center;
-  margin-top: 55px;
 }
 
 .board-guess {
@@ -200,7 +199,7 @@ p {
     max-width: 960px;
   }
   .header {
-    margin-top: 120px;
+    margin-top: 100px;
   }
 }
 

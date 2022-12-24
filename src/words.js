@@ -1,9 +1,9 @@
 const categories = {
   food: [
-    'bacon', 'bagel', 'bread', 'butter', 'beans', 'avocado', 'almond', 'caramel', 'cauliflower', 
-    'carrot', 'cornflakes', 'dragonfruit', 'egg', 'flour', 'fish', 'gelatin', 'gravy', 'ginger', 
+    'bacon', 'bagel', 'bread', 'butter', 'beans', 'avocado', 'almond', 'caramel', 
+    'carrot', 'cornflakes', 'egg', 'flour', 'fish', 'gelatin', 'gravy', 'ginger', 
     'honey', 'herbs', 'icecream', 'jalapeno', 'kebab', 'ketchup', 'kiwi', 'lasagna', 'lobster',
-    'macaroni', 'marshmallow', 'margarine', 'mozzarella', 'noodles', 'oregano', 'peanutbutter', 
+    'macaroni', 'margarine', 'mozzarella', 'noodles', 'oregano', 
     'potato', 'ravioli', 'steak', 'taco', 'vanilla','waffle', 'yogurt', 'zucchini'
   ],
   programming: [
@@ -12,11 +12,11 @@ const categories = {
   ],
   everyday: [
     'cupboard', 'battery', 'mirror', 'scissors', 'newspaper', 'alarmclock', 'knife', 'purse', 'magazine', 'passport', 
-    'headphone', 'sofa', 'pencil', 'glass', 'laptop', 'fork', 'watch', 'photo', 'camera', 'creditcard', 'mobilephone',
+    'headphone', 'sofa', 'pencil', 'glass', 'laptop', 'fork', 'watch', 'photo', 'camera', 'creditcard', 'mobile',
   ],
   sports: [
     'basketball', 'aerobics', 'boxer', 'biking', 'bowling', 'baseball', 'cricket', 'diving',
-    'fitness', 'football', 'golf', 'gymnast', 'hockey', 'iceskating', 'jogger', 'karate', 'rockclimbing', 'running',
+    'fitness', 'football', 'golf', 'gymnast', 'hockey', 'iceskating', 'jogger', 'karate', 'running',
     'sailing', 'volleyball', 
   ]
 };
