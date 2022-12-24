@@ -17,7 +17,7 @@ function Hangman() {
   // whenever the game state changes, for example by changing category, all disabled button in the array will be restored.
   function handleLetterClicked(e) {
     let letter = e.target.value;
-    if (e.key) {
+    if (e.key) { // check if is keyboard event, if clickedLetter array includes this char, do nothing, else the leter if the event to add to arr.
       if (clickedLetter.includes(e.key)) {
         return;
       } 
@@ -41,10 +41,11 @@ function Hangman() {
   }; 
 
   // copy guessedArr state array to new variable. 
-  // for each character in word - if the letter the same as char, save that letter in the same index as char, save the newArray to guessedArr state.
   // if guessedArr state is full, meaning the same as word - game is finished, updating winorlose state to You Win!.
   function handleCharFound(letter) {
     let newGuessedArr = [...guessedArr];
+      // for each character in word - if the letter the same as char, save that letter in the same index as char, 
+      // save the newArray to guessedArr state.
     word.split('').forEach((char,i) => {
       if (letter === char) newGuessedArr[i] = letter;
     });
@@ -81,7 +82,7 @@ function Hangman() {
         <div className="header">
           <h2>THE HANGMAN</h2>
           <small>- Simple React guess the word game -</small><br/>
-          <small>Finish the word, before running out of lives.</small>
+          <small>Finish the word before running out of lives.</small>
         </div>
         <Categories resetGame={resetGame} selectedCat={selectedCat} />
         <Canvas lives={lives} />

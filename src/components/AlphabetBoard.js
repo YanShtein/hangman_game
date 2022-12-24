@@ -29,7 +29,7 @@ function AlphabetBoard({ handleLetterClicked, winOrLose, clickedLetter }) {
     if (alphabet.includes(e.key)) {
       handleLetterClicked(e);
     }
-  }
+  };
 
   return (
     <div className="board-keyboard">
